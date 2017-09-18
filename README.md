@@ -1,5 +1,7 @@
 # crawler-xml-filters
 
+[![Build Status](https://travis-ci.org/montacasa/crawler-xml-filters.svg?branch=dev)](https://travis-ci.org/montacasa/crawler-xml-filters)
+
 :construction: WIP
 
 ## Usage
