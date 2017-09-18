@@ -1,6 +1,6 @@
 {
   "name": "crawler-xml-filters",
-  "version": "0.0.0",
+  "version": "0.1.0-beta",
   "description": "",
   "main": "./lib/crawler-xml-filters.min.js",
   "scripts": {
