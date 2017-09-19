@@ -1,6 +1,6 @@
 /* global test expect */
 
-const add = require('./adder');
+const add = require('./.');
 
 test('should add a string to a list only once', () => {
   const arr = ['test'];
