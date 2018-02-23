@@ -1,9 +1,10 @@
 const some = require('lodash').some;
 
 const exceptions = [
-  {code: 'lolahome'},
-  {code: 'fastshop'},
   {code: 'artefacto'},
+  {code: 'artesian'},
+  {code: 'fastshop'},
+  {code: 'lolahome'},
 ];
 
 /**
