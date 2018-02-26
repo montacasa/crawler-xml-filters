@@ -1,12 +1,13 @@
 /**
  * Sanitize values
  *
- * @param  {String | Array<string>} value
- * @param  {Object}                 sanitize
+ * @param  {String | Array<string>} value     The value to be sanitized
+ * @param  {Object}                 sanitize  A sanitization type from sanitizer
  * @return {String | Array<string>}
  */
 const valueSanitizer = (key, value, sanitize) => {
   switch (key) {
+    // case 'image_link': TODO: Check if a sanitized 'image_link' field get here as it should
     case 'images':
     case 'categories':
       return sanitize.arrays(value);

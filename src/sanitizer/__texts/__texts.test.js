@@ -14,3 +14,12 @@ test('should sanitize text without __text', () => {
   const sanitized = sanitizer(text);
   expect(sanitized).toBe('Text');
 });
+
+test('should sanitize text inside multiple fields object', () => {
+  let text = {
+    aField: 'doesnt matter',
+    __text: 'Text',
+  };
+  const sanitized = sanitizer(text);
+  expect(sanitized).toBe('Text');
+});

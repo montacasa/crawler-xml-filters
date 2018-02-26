@@ -3,8 +3,7 @@
  *
  * @param  {Array<string>} fields           List of fields to look inside product
  * @param  {Object}        product          Where the actual fields are
- * @param  {Object}        services         Sanitization and registration services
- * @param  {Object}        productToUpdate  Collection to be updated
+ * @param  {Object}        services         Sanitization and sanitize list services
  * @return {Object}
  */
 const loop = (fields, product, services) => {

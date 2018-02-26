@@ -97,4 +97,19 @@ describe('sanitizer', () => {
     expect(result.url).toBe('http://www.url.com');
     expect(result.name).toBe('NAME');
   });
+
+  test('should extract a field with __text from a loop', () => {
+    const fields = ['images'];
+    const item = {
+      images: {
+        __aField: 'doesnt matter',
+        __text: 'image here',
+      },
+    };
+
+    const services = {sanitizer, sanitize};
+    const result = loop(fields, item, services);
+
+    expect(result.images[0]).toBe('image here');
+  });
 });

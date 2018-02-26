@@ -19,6 +19,18 @@ describe('string and objects', () => {
     const sanitized = sanitizer(field);
     expect(sanitized[0]).toBe('nested');
   });
+
+  test('should sanitize object field with __text subfield', () => {
+    let field = {parent: {__text: 'Text'}};
+    const sanitized = sanitizer(field);
+    expect(sanitized[0]).toBe('Text');
+  });
+
+  test('should sanitize object with multiple fields with __text subfield', () => {
+    let field = {parent: {someField: 'ignore-me', __text: 'Text'}};
+    const sanitized = sanitizer(field);
+    expect(sanitized[0]).toBe('Text');
+  });
 });
 
 describe('arrays', () => {
