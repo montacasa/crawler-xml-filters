@@ -15,6 +15,15 @@ describe('images', () => {
     };
     expect(sanitizer(key, value, sanitize)).toBe('sanitized-images');
   });
+
+  test('should sanitize image_link', () => {
+    const key = 'image_link';
+    const value = 'image';
+    const sanitize = {
+      arrays: mockSanitizer,
+    };
+    expect(sanitizer(key, value, sanitize)).toBe('sanitized-image');
+  });
 });
 
 describe('categories', () => {
@@ -48,6 +57,17 @@ describe('installment', () => {
       installment: mockSanitizer,
     };
     expect(sanitizer(key, value, sanitize)).toBe('sanitized-installment');
+  });
+});
+
+describe('price', () => {
+  test('should sanitize string with __text', () => {
+    const key = 'price';
+    const value = 'price';
+    const sanitize = {
+      __texts: mockSanitizer,
+    };
+    expect(sanitizer(key, value, sanitize)).toBe('sanitized-price');
   });
 });
 
