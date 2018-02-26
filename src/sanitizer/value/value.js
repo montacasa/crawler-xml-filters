@@ -7,7 +7,7 @@
  */
 const valueSanitizer = (key, value, sanitize) => {
   switch (key) {
-    // case 'image_link': TODO: Check if a sanitized 'image_link' field get here as it should
+    case 'image_link':
     case 'images':
     case 'categories':
       return sanitize.arrays(value);
@@ -16,6 +16,8 @@ const valueSanitizer = (key, value, sanitize) => {
       const sanitizeUnderscores = sanitize.underscore(sanitizeTexts);
       return sanitizeUnderscores;
     }
+    case 'price':
+      return sanitize.__texts(value);
     case 'installment':
       return sanitize.installment(value);
     case 'sku':
