@@ -12,6 +12,14 @@ const arrays = field => {
     return [field.__text];
   }
 
+  // deal with nested objects with __text field
+  for (const p in field) {
+    const prop = field[p];
+    if (prop && prop.__text) {
+      return [prop.__text];
+    }
+  }
+
   // deal with nested objects
   let f = field;
   if (f && f.image) {
