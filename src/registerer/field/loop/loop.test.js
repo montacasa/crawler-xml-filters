@@ -112,4 +112,22 @@ describe('sanitizer', () => {
 
     expect(result.images[0]).toBe('image here');
   });
+
+  test('should work with price and image_link', () => {
+    const fields = ['price', 'image_link'];
+    const item = {
+      price: {
+        __text: 'price here',
+      },
+      image_link: {
+        __text: 'image here',
+      },
+    };
+
+    const services = {sanitizer, sanitize};
+    const result = loop(fields, item, services);
+
+    expect(result.image_link[0]).toBe('image here');
+    expect(result.price).toBe('price here');
+  });
 });
