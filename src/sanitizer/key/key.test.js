@@ -1,6 +1,7 @@
 /* global describe test expect */
 const sanitizer = require('./key');
 
+// TODO: Remove code below or increment test
 // const skus = []; // skus list provided before the function
 // let skusCounter = Math.floor(Math.random() * 999) + 0;
 // const mockSanitize = jest.fn();
