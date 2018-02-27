@@ -1,5 +1,5 @@
 /**
- * Sanitize installment field
+ * Sanitize installment field — it basically checks for specific object format and nested __text fields
  *
  * @param  {Object} field
  * @return {Object}

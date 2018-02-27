@@ -1,4 +1,5 @@
 // NOTE: deprecated!
+// TODO: Remove it from this module
 /**
  * Update a field within a product
  *

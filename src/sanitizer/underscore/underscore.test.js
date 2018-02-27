@@ -25,13 +25,13 @@ test('should sanitize text special characters', () => {
   expect(sanitized).toBe('aaaaeeeiiioooouuuc');
 });
 
-test('should return an error if text is null', () => {
+test('should return null text is null', () => {
   let text = null;
   const sanitized = sanitizer(text);
   expect(sanitized).toBeNull();
 });
 
-test('should return an error if text is undefined', () => {
+test('should return null text is undefined', () => {
   let text = undefined; // eslint-disable-line no-undef-init, no-undefined
   const sanitized = sanitizer(text);
   expect(sanitized).toBeNull();

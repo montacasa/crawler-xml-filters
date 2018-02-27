@@ -84,6 +84,7 @@ test('should return true if a field is not found in both lists', () => {
   expect(result).toBeTruthy();
 });
 
+// TODO: simplify this test case
 test.only(
   'should return true if a new item is not different from a product to update',
   () => {
@@ -142,6 +143,7 @@ test.only(
   },
 );
 
+// TODO: simplify this test case
 test('should return false if a new item is different from a product to update', () => {
   const fields = [
     'meta_description',

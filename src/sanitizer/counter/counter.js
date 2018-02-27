@@ -1,5 +1,5 @@
 /**
- * Update counter
+ * Update counter based on boolean (used with validations)
  *
  * @param  {Number}  original     Original value
  * @param  {Boolean} shouldUpdate Update checker
