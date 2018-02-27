@@ -1,9 +1,9 @@
 /**
- * Sanitize texts inside __text fields
+ * Sanitize objects inside __text fields
  *
- * @param  {Object} field e.g. { __text: 'String' }
- * @return {String}
+ * @param  {Object} obj  Object value to be sanitized - e.g. { __text: 'String' }
+ * @return {...*}        The value found inside __text field
  */
-const __text = field => (field && field.__text) || field;
+const __text = obj => (obj && obj.__text) || obj;
 
 module.exports = __text;

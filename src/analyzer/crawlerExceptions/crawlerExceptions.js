@@ -9,7 +9,7 @@ const exceptions = [
 
 /**
  * Check if store is an exception to be actually crawled
- * @param  {String}      code     Store code
+ * @param  {String}   code  Store code
  * @return {Boolean}
  */
 const crawlerExceptions = code => {

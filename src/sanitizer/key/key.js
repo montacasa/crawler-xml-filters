@@ -3,8 +3,8 @@ const updater = require('../../updater');
 /**
  * Satinize key name
  *
- * @param  {String} key
- * @param  {Object} sanitize Object of functions to sanitize. e.g. Product.sanitize
+ * @param  {String} key       The key which should be sanitized
+ * @param  {Object} sanitize  Object of functions to sanitize it and mark if updater function may update the key or not
  * @return {String}
  */
 const keySanitizer = (key, sanitize) => {
