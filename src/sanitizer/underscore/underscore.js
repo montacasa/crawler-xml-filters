@@ -1,3 +1,4 @@
+// TODO: Rename this function to slugify
 /**
  * Sanitize strings making it slug friendly
  *
