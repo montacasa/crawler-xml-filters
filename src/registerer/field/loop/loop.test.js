@@ -1,8 +1,6 @@
 /* global describe test expect */
 
 const loop = require('./loop');
-const sanitizer = require('../../../sanitizer');
-const sanitize = sanitizer;
 
 test('should loop', () => {
   const fields = ['sku', 'active', 'color'];
@@ -11,8 +9,7 @@ test('should loop', () => {
     active: true,
     color: 'green',
   };
-  const services = {sanitizer, sanitize};
-  const result = loop(fields, product, services);
+  const result = loop(fields, product);
 
   expect(result.color).toBe('green');
   expect(result).toBeTruthy();
@@ -24,8 +21,7 @@ describe('sanitizer', () => {
     const product = {
       active: true,
     };
-    const services = {sanitizer, sanitize};
-    const result = loop(fields, product, services);
+    const result = loop(fields, product);
 
     expect(result.hasOwnProperty('color')).toBeFalsy();
     expect(result).toBeTruthy();
@@ -36,8 +32,7 @@ describe('sanitizer', () => {
     const product = {
       id: 'ID_123',
     };
-    const services = {sanitizer, sanitize};
-    const result = loop(fields, product, services);
+    const result = loop(fields, product);
 
     expect(result.hasOwnProperty('id')).toBeFalsy();
     expect(result.sku).toBe('ID_123');
@@ -48,8 +43,7 @@ describe('sanitizer', () => {
     const product = {
       title: 'TITLE_123',
     };
-    const services = {sanitizer, sanitize};
-    const result = loop(fields, product, services);
+    const result = loop(fields, product);
 
     expect(result.hasOwnProperty('title')).toBeFalsy();
     expect(result.name).toBe('TITLE_123');
@@ -63,8 +57,7 @@ describe('sanitizer', () => {
       images: 'http://www.images.com/12313',
       title: 'TITLE',
     };
-    const services = {sanitizer, sanitize};
-    const result = loop(fields, product, services);
+    const result = loop(fields, product);
 
     expect(result.hasOwnProperty('id')).toBeFalsy();
     expect(result.hasOwnProperty('link')).toBeFalsy();
@@ -86,8 +79,7 @@ describe('sanitizer', () => {
       name: 'NAME',
       title: 'TITLE',
     };
-    const services = {sanitizer, sanitize};
-    const result = loop(fields, product, services);
+    const result = loop(fields, product);
 
     expect(result.hasOwnProperty('id')).toBeFalsy();
     expect(result.hasOwnProperty('link')).toBeFalsy();
@@ -107,8 +99,7 @@ describe('sanitizer', () => {
       },
     };
 
-    const services = {sanitizer, sanitize};
-    const result = loop(fields, item, services);
+    const result = loop(fields, item);
 
     expect(result.images[0]).toBe('image here');
   });
@@ -122,8 +113,7 @@ describe('sanitizer', () => {
       },
     };
 
-    const services = {sanitizer, sanitize};
-    const result = loop(fields, item, services);
+    const result = loop(fields, item);
 
     expect(result.images[0]).toBe('image here');
   });
@@ -137,8 +127,7 @@ describe('sanitizer', () => {
       },
     };
 
-    const services = {sanitizer, sanitize};
-    const result = loop(fields, item, services);
+    const result = loop(fields, item);
 
     expect(result.images[0]).toBe('Text');
   });
@@ -152,8 +141,7 @@ describe('sanitizer', () => {
             __text: 'image',
           },
         };
-        const services = {sanitizer, sanitize};
-        const result = loop(fields, item, services);
+        const result = loop(fields, item);
 
         expect(result.images[0]).toBe('image');
       });
@@ -167,8 +155,7 @@ describe('sanitizer', () => {
             __text: 'image',
           },
         };
-        const services = {sanitizer, sanitize};
-        const result = loop(fields, item, services);
+        const result = loop(fields, item);
 
         expect(result.images[0]).toBe('image');
       });
@@ -182,8 +169,7 @@ describe('sanitizer', () => {
             __anotherField: 'af',
           },
         };
-        const services = {sanitizer, sanitize};
-        const result = loop(fields, item, services);
+        const result = loop(fields, item);
 
         expect(result.images[0]).toBe('image');
       });
