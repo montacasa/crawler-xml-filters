@@ -1,3 +1,4 @@
+const sanitizer = require('../../../sanitizer');
 /**
  * Loop and sanitize fields of an item to create a new one
  *
@@ -6,8 +7,7 @@
  * @param  {Object}        services  Sanitization methods and sanitize list services
  * @return {Object}                  A new object representing the sanitized item
  */
-const loop = (fields, item, services) => {
-  const {sanitizer, sanitize} = services;
+const loop = (fields, item, list) => {
   const data = {};
 
   for (let f = fields.length - 1; f >= 0; f--) {
@@ -16,8 +16,8 @@ const loop = (fields, item, services) => {
 
     // sanitize keys and values
     // TODO: Document keys and values sanitization better
-    value = sanitizer.value(key, value, sanitize);
-    key = sanitizer.key(key, sanitize);
+    value = sanitizer.value(key, value, sanitizer);
+    key = sanitizer.key(key, sanitizer);
 
     // update the field
     if (value) {

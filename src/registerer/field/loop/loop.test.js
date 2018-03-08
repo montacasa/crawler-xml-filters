@@ -143,7 +143,6 @@ describe('sanitizer', () => {
     expect(result.images[0]).toBe('Text');
   });
 
-  // TODO: Make tests to sanitize special fields
   describe('special fields', () => {
     describe('images', () => {
       const fields = ['images'];
@@ -159,9 +158,10 @@ describe('sanitizer', () => {
         expect(result.images[0]).toBe('image');
       });
     });
+
     describe('image_link', () => {
-      const fields = ['image_link'];
       test('should sanitize __texts', () => {
+        const fields = ['image_link'];
         const item = {
           image_link: {
             __text: 'image',
@@ -172,9 +172,25 @@ describe('sanitizer', () => {
 
         expect(result.images[0]).toBe('image');
       });
+
+      test('should sanitize __texts even if it is not the only field', () => {
+        const fields = ['image_link'];
+        const item = {
+          image_link: {
+            __someField: 'sf',
+            __text: 'image',
+            __anotherField: 'af',
+          },
+        };
+        const services = {sanitizer, sanitize};
+        const result = loop(fields, item, services);
+
+        expect(result.images[0]).toBe('image');
+      });
     });
   });
-  // test('should sanitize image_link');
+
+  // TODO: Make tests to sanitize special fields
   // test('should sanitize categories');
   // test('should sanitize id');
   // test('should sanitize price');

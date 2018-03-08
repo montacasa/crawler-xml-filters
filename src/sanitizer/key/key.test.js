@@ -61,6 +61,30 @@ describe('sanitize title', () => {
   });
 });
 
+describe('sanitize image_link', () => {
+  test('should change to images', () => {
+    let key = 'image_link';
+    const newKey = sanitizer(key, list());
+    expect(newKey).toBe('images');
+  });
+
+  test('should not change if images already exists', () => {
+    let newList = list();
+    newList.images = '#123';
+    let key = 'image_link';
+    const newKey = sanitizer(key, newList);
+    expect(newKey).toBe('image_link');
+  });
+
+  test('should change if images is a nulled array', () => {
+    let newList = list();
+    newList.images = [null];
+    let key = 'image_link';
+    const newKey = sanitizer(key, newList);
+    expect(newKey).toBe('image_link');
+  });
+});
+
 describe('sanitize additional_image_link', () => {
   test('should change to images', () => {
     let key = 'additional_image_link';
