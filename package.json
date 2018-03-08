@@ -4,6 +4,7 @@
   "description": "",
   "main": "./lib/crawler-xml-filters.min.js",
   "scripts": {
+    "deploy": "echo \"TESTING\" && npm test && echo \"DEPLOYING TO NPM\" && npm run build && npm publish",
     "build": "WEBPACK_ENV=build webpack",
     "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch",
     "test": "jest"
