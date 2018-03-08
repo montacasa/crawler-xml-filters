@@ -100,3 +100,67 @@ describe('sanitize google_product_category', () => {
     expect(newKey).toBe('google_product_category');
   });
 });
+
+describe('sanitize brand', () => {
+  test('should change to manufacturer', () => {
+    let key = 'brand';
+    const newKey = sanitizer(key, list());
+    expect(newKey).toBe('manufacturer');
+  });
+
+  test('should not change if manufacturer already exists', () => {
+    let newList = list();
+    newList.manufacturer = '#123';
+    let key = 'brand';
+    const newKey = sanitizer(key, newList);
+    expect(newKey).toBe('brand');
+  });
+});
+
+describe('sanitize warranty', () => {
+  test('should change to garantee', () => {
+    let key = 'warranty';
+    const newKey = sanitizer(key, list());
+    expect(newKey).toBe('garantee');
+  });
+
+  test('should not change if garantee already exists', () => {
+    let newList = list();
+    newList.garantee = '#123';
+    let key = 'warranty';
+    const newKey = sanitizer(key, newList);
+    expect(newKey).toBe('warranty');
+  });
+});
+
+describe('sanitize summary', () => {
+  test('should change to description', () => {
+    let key = 'summary';
+    const newKey = sanitizer(key, list());
+    expect(newKey).toBe('description');
+  });
+
+  test('should not change if description already exists', () => {
+    let newList = list();
+    newList.description = '#123';
+    let key = 'summary';
+    const newKey = sanitizer(key, newList);
+    expect(newKey).toBe('summary');
+  });
+});
+
+describe('sanitize sale_price', () => {
+  test('should change to special_price', () => {
+    let key = 'sale_price';
+    const newKey = sanitizer(key, list());
+    expect(newKey).toBe('special_price');
+  });
+
+  test('should not change if special_price already exists', () => {
+    let newList = list();
+    newList.special_price = '#123';
+    let key = 'sale_price';
+    const newKey = sanitizer(key, newList);
+    expect(newKey).toBe('sale_price');
+  });
+});
