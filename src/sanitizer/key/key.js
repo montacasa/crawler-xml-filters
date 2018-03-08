@@ -10,7 +10,7 @@ const updater = require('../../updater');
 const keySanitizer = (key, list) => {
   // TODO: Make closure less verbose
   switch (key) {
-    // Most common key exceptions
+    // Most common key pairs (Default)
     case 'id':
       return updater(key, list.sku, 'sku');
     case 'link':
@@ -18,7 +18,17 @@ const keySanitizer = (key, list) => {
     case 'title':
       return updater(key, list.name, 'name');
 
-    // Other possible key exceptions
+    // Other possible key pairs (Default)
+    case 'brand':
+      return updater(key, list.manufacturer, 'manufacturer');
+    case 'warranty':
+      return updater(key, list.garantee, 'garantee');
+    case 'summary':
+      return updater(key, list.description, 'description');
+    case 'sale_price':
+      return updater(key, list.special_price, 'special_price');
+
+    // Accepted key exceptions (Google)
     case 'additional_image_link': {
       const image_link = updater(key, list.image_link, 'image_link');
       const images = updater(key, list.images, 'images');
