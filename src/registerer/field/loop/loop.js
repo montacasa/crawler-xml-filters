@@ -7,7 +7,7 @@ const sanitizer = require('../../../sanitizer');
  * @param  {Object}        services  Sanitization methods and sanitize list services
  * @return {Object}                  A new object representing the sanitized item
  */
-const loop = (fields, item, list) => {
+const loop = (fields, item) => {
   const data = {};
 
   for (let f = fields.length - 1; f >= 0; f--) {
