@@ -6,6 +6,7 @@ test('should add a string to a list only once', () => {
   const arr = ['test'];
   const newArr = add('test', arr);
   expect(newArr[0]).toBe('test');
+  expect(newArr[1]).toBeFalsy();
 });
 
 test('should add a string to an empty list', () => {

@@ -1,19 +1,20 @@
+// TODO: Rename this function to slugify
 /**
  * Sanitize strings making it slug friendly
  *
- * @param  {String} field
- * @return {String}
+ * @param  {String}  str  String to be sanitized
+ * @return {String}       Sanitized string
  */
-const underscore = field => {
-  if (!field) {
+const underscore = str => {
+  if (!str) {
     return null;
   }
 
-  if (typeof field.replace !== 'function') {
-    return field;
+  if (typeof str.replace !== 'function') {
+    return str;
   }
 
-  const spaces = field && field.replace(/\s|-|\\|\||\//g, '_');
+  const spaces = str && str.replace(/\s|-|\\|\||\//g, '_');
   const specialChars = spaces
     .replace(/[ç]/gi, 'c')
     .replace(/[á|à|ã|â]/gi, 'a')

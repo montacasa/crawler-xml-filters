@@ -11,5 +11,6 @@ describe('analize if store code is an exception', () => {
     expect(crawlerExceptions('lolahome')).toBeTruthy();
     expect(crawlerExceptions('fastshop')).toBeTruthy();
     expect(crawlerExceptions('artefacto')).toBeTruthy();
+    expect(crawlerExceptions('artesian')).toBeTruthy();
   });
 });
