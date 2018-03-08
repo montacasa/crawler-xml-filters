@@ -2,27 +2,35 @@
 const updater = require('./');
 
 describe('updater', () => {
-  test('should update field if check fails', () => {
+  test('should update field if forbid fails', () => {
     const original = 'original';
-    const check = false;
+    const forbid = false;
     const newField = 'newField';
 
-    expect(updater(original, check, newField)).toBe('newField');
+    expect(updater(original, forbid, newField)).toBe('newField');
   });
 
-  test('should not update field if check passes', () => {
+  test('should not update field if forbid is true', () => {
     const original = 'original';
-    const check = true;
+    const forbid = true;
     const newField = 'newField';
 
-    expect(updater(original, check, newField)).toBe('original');
+    expect(updater(original, forbid, newField)).toBe('original');
   });
 
-  test('should update field if check is undefined', () => {
+  test('should update field if forbid is undefined', () => {
     const original = 'original';
-    const check = undefined; // eslint-disable-line no-undefined
+    const forbid = undefined; // eslint-disable-line no-undefined
     const newField = 'newField';
 
-    expect(updater(original, check, newField)).toBe('newField');
+    expect(updater(original, forbid, newField)).toBe('newField');
+  });
+
+  test('should not update field if forbid is truethy', () => {
+    const original = 'original';
+    const forbid = 'string'; // eslint-disable-line no-undefined
+    const newField = 'newField';
+
+    expect(updater(original, forbid, newField)).toBe('original');
   });
 });

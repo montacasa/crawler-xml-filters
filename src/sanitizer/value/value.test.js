@@ -16,7 +16,7 @@ describe('images', () => {
     expect(sanitizer(key, value, sanitize)).toBe('sanitized-images');
   });
 
-  test('should sanitize image_link', () => {
+  test('should sanitize image_link as an array', () => {
     const key = 'image_link';
     const value = 'image';
     const sanitize = {

@@ -98,7 +98,7 @@ describe('sanitizer', () => {
     expect(result.name).toBe('NAME');
   });
 
-  test('should extract a field with __text from a loop', () => {
+  test('should extract a field with __text', () => {
     const fields = ['images'];
     const item = {
       images: {
@@ -113,13 +113,11 @@ describe('sanitizer', () => {
     expect(result.images[0]).toBe('image here');
   });
 
-  test('should work with price and image_link', () => {
-    const fields = ['price', 'image_link'];
+  test('should work with exceptional fields', () => {
+    const fields = ['image_link'];
     const item = {
-      price: {
-        __text: 'price here',
-      },
       image_link: {
+        some_ignored_field: 123,
         __text: 'image here',
       },
     };
@@ -127,7 +125,59 @@ describe('sanitizer', () => {
     const services = {sanitizer, sanitize};
     const result = loop(fields, item, services);
 
-    expect(result.image_link[0]).toBe('image here');
-    expect(result.price).toBe('price here');
+    expect(result.images[0]).toBe('image here');
   });
+
+  test('should work with object with multiple keys containing "__"', () => {
+    const fields = ['images'];
+    const item = {
+      images: {
+        __ignored: 'ignored',
+        __text: 'Text',
+      },
+    };
+
+    const services = {sanitizer, sanitize};
+    const result = loop(fields, item, services);
+
+    expect(result.images[0]).toBe('Text');
+  });
+
+  // TODO: Make tests to sanitize special fields
+  describe('special fields', () => {
+    describe('images', () => {
+      const fields = ['images'];
+      test('should sanitize __texts', () => {
+        const item = {
+          images: {
+            __text: 'image',
+          },
+        };
+        const services = {sanitizer, sanitize};
+        const result = loop(fields, item, services);
+
+        expect(result.images[0]).toBe('image');
+      });
+    });
+    describe('image_link', () => {
+      const fields = ['image_link'];
+      test('should sanitize __texts', () => {
+        const item = {
+          image_link: {
+            __text: 'image',
+          },
+        };
+        const services = {sanitizer, sanitize};
+        const result = loop(fields, item, services);
+
+        expect(result.images[0]).toBe('image');
+      });
+    });
+  });
+  // test('should sanitize image_link');
+  // test('should sanitize categories');
+  // test('should sanitize id');
+  // test('should sanitize price');
+  // test('should sanitize installment');
+  // test('should sanitize sku');
 });
