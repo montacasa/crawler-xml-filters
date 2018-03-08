@@ -1,9 +1,10 @@
 {
   "name": "@montacasa/crawler-xml-filters",
-  "version": "0.1.0-beta.11",
+  "version": "0.1.0-beta.12",
   "description": "",
   "main": "./lib/crawler-xml-filters.min.js",
   "scripts": {
+    "deploy": "echo \"TESTING\" && npm test && echo \"DEPLOYING TO NPM\" && npm run build && npm publish",
     "build": "WEBPACK_ENV=build webpack",
     "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch",
     "test": "jest"
