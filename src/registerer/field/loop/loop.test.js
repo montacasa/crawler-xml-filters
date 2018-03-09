@@ -104,20 +104,6 @@ describe('sanitizer', () => {
     expect(result.images[0]).toBe('image here');
   });
 
-  test('should work with exceptional fields', () => {
-    const fields = ['image_link'];
-    const item = {
-      image_link: {
-        some_ignored_field: 123,
-        __text: 'image here',
-      },
-    };
-
-    const result = loop(fields, item);
-
-    expect(result.images[0]).toBe('image here');
-  });
-
   test('should work with object with multiple keys containing "__"', () => {
     const fields = ['images'];
     const item = {
