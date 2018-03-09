@@ -1,3 +1,9 @@
 language: node_js
 node_js:
-  - "7"
+- '7'
+deploy:
+  provider: npm
+  on:
+    tags: true
+  api_key:
+    secure: S5qfn3WQzEjQQmhHV6z3rU3k91pB4nKbw7ln42HrqScW3GWRZgn6dMqUSTfyn2zPymsrR7b9CisiyaY0rqaHsSECjGuUDovbmqDKgCMK5Oi6JSVpD6JRRWKotWDziAeTzEm3pP40LBomcMGfSGjOQIV0KZqUBdoJ0xSxyHhA/t7cjtZIv/bQolhtS2mF+McMeIx6D8Svfme+FqrGzmFNER7PfpWKBsiWQVhOJguzgU/Ag0h1FgSyONN4r+1sBf00bsYSoGhAH9tTuc7Yh9w0Wx+Hs5fGhFPY5offB4Oh410slxvOHtBDGDDtihAXBclrrOY8bRzOPhbqqoFFLVkmr/yThvhXxs92Hh5BjFalg6XrwVtCGGHGIVc2w/Xe1z2VuzHff154GF90Linv433yvQMPrkug5MIenc+Ks51l4/xodBLaGegC06pGAEtJsfFIMjayUXpmljLp1dHkb2pkHXDJRleuN3Hurd/gJhPMyFXNbsS4jTzeFENQ7iWvWBtT3mScXtfbjS/rKExBjyyBNg113BMNQVkZFhyTbX6fgYnEHB7Uh2sO47TdHcp+RHo/2ODm3e/maEZ7Uw2BnUwcGRSXI/bSZhcyfmGUG0BLd6bvKmvY5eoZDYGRF6royAd/f8OhZ84/OwCoGcAiIGUsuxnidQfhc2ecUmO7iknxNKo=
