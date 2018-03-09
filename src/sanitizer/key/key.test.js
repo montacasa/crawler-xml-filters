@@ -173,6 +173,22 @@ describe('sanitize summary', () => {
   });
 });
 
+describe('sanitize manufacturer', () => {
+  test('should change to brand', () => {
+    let key = 'manufacturer';
+    const newKey = sanitizer(key, list());
+    expect(newKey).toBe('brand');
+  });
+
+  test('should not change if brand already exists', () => {
+    let newList = list();
+    newList.brand = '#123';
+    let key = 'manufacturer';
+    const newKey = sanitizer(key, newList);
+    expect(newKey).toBe('manufacturer');
+  });
+});
+
 describe('sanitize sale_price', () => {
   test('should change to special_price', () => {
     let key = 'sale_price';

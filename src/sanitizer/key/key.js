@@ -47,6 +47,9 @@ const keySanitizer = (key, list) => {
     case 'google_product_category':
       return updater(key, list.categories, 'categories');
 
+    case 'manufacturer':
+      return updater(key, list.brand, 'brand');
+
     // Default => return the key itself!
     default:
   }
