@@ -135,7 +135,17 @@ describe('sanitizer', () => {
           },
         };
         const result = loop(fields, item);
+        expect(result.images[0]).toBe('image');
+      });
 
+      test('should save image_link as images even when images is also a required field, but absent', () => {
+        const fields = ['images', 'image_link'];
+        const item = {
+          image_link: {
+            __text: 'image',
+          },
+        };
+        const result = loop(fields, item);
         expect(result.images[0]).toBe('image');
       });
 
@@ -149,16 +159,28 @@ describe('sanitizer', () => {
           },
         };
         const result = loop(fields, item);
-
         expect(result.images[0]).toBe('image');
       });
+    });
+  });
+  // test('should sanitize sku');
+  // test('should sanitize id');
+
+  describe('id', () => {
+    test('should save id as sku even when sku is also a required field, but absent', () => {
+      const fields = ['sku', 'id'];
+      const item = {
+        id: {
+          __text: 'id',
+        },
+      };
+      const result = loop(fields, item);
+      expect(result.sku).toBe('id');
     });
   });
 
   // TODO: Make tests to sanitize special fields
   // test('should sanitize categories');
-  // test('should sanitize id');
   // test('should sanitize price');
   // test('should sanitize installment');
-  // test('should sanitize sku');
 });
