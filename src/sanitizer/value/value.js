@@ -16,15 +16,13 @@ const valueSanitizer = (key, value, sanitize) => {
       const sanitizeUnderscores = sanitize.underscore(sanitizeTexts);
       return sanitizeUnderscores;
     }
-    case 'price': // TODO: Validate the need this field with values sanitizer
-      return sanitize.__texts(value);
     case 'installment':
       return sanitize.installment(value);
     case 'sku':
       return sanitize.underscore(value);
     default:
   }
-  return value;
+  return sanitize.__texts(value);
 };
 
 module.exports = valueSanitizer;
