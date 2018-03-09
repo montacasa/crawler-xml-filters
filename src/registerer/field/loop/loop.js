@@ -17,10 +17,16 @@ const loop = (fields, item) => {
     // sanitize keys and values
     // TODO: Document keys and values sanitization better
     value = sanitizer.value(key, value, sanitizer);
-    key = sanitizer.key(key, sanitizer);
+    key = sanitizer.key(key, item);
 
     // update the field
-    if (value) {
+    if (value && value.constructor === Array) {
+      // if it's not an invalid array
+      if (value[0]) {
+        Object.assign(data, {[key]: value});
+      }
+    } else if (value) {
+      // or if it's a valid single value
       Object.assign(data, {[key]: value});
     }
   }
