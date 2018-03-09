@@ -84,3 +84,14 @@ describe('sku', () => {
     expect().anything();
   });
 });
+
+describe('availability', () => {
+  test('should sanitize string with __text', () => {
+    const key = 'availability';
+    const value = 'availability';
+    const sanitize = {
+      __texts: mockSanitizer,
+    };
+    expect(sanitizer(key, value, sanitize)).toBe('sanitized-availability');
+  });
+});
