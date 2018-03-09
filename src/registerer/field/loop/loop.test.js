@@ -96,7 +96,6 @@ describe('sanitizer', () => {
     };
 
     const result = loop(fields, item);
-
     expect(result.images[0]).toBe('image here');
   });
 
@@ -110,7 +109,6 @@ describe('sanitizer', () => {
     };
 
     const result = loop(fields, item);
-
     expect(result.images[0]).toBe('Text');
   });
 
@@ -124,7 +122,6 @@ describe('sanitizer', () => {
           },
         };
         const result = loop(fields, item);
-
         expect(result.images[0]).toBe('image');
       });
     });
