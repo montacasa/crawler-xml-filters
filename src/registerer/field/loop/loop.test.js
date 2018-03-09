@@ -69,7 +69,7 @@ describe('sanitizer', () => {
     expect(result.name).toBe('TITLE');
   });
 
-  test('should prefer required keys', () => {
+  test('should substitute required keys', () => {
     const fields = ['sku', 'id', 'url', 'link', 'images', 'name', 'title'];
     const product = {
       sku: 'SKU_123',
@@ -80,10 +80,6 @@ describe('sanitizer', () => {
       title: 'TITLE',
     };
     const result = loop(fields, product);
-
-    expect(result.hasOwnProperty('id')).toBeFalsy();
-    expect(result.hasOwnProperty('link')).toBeFalsy();
-    expect(result.hasOwnProperty('title')).toBeFalsy();
 
     expect(result.sku).toBe('SKU_123');
     expect(result.url).toBe('http://www.url.com');
